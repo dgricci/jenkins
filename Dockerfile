@@ -14,7 +14,7 @@ LABEL       version="1.0.0" \
 # apt-get install docker-ce-cli="^.*${DOCKER_ENGINE_VERSION}.*$"
 # but this does seem to work ... workaround with apt-cache !
 ARG DOCKER_ENGINE_VERSION
-ENV DOCKER_ENGINE_VERSION ${DOCKER_ENGINE_VERSION:-18.09.0}
+ENV DOCKER_ENGINE_VERSION ${DOCKER_ENGINE_VERSION:-18.09.1}
 
 # set docker group id the same as the host to prevent a "dial unix
 # /var/run/docker.sock: connect: permission denied" error. Implies rebuilding
@@ -39,7 +39,7 @@ RUN \
         $(lsb_release -cs) \
         stable" && \
     apt-get -qy update && \
-    if [ $(apt-cache madison docker-ce-cli | cut -d\| -f2 | tr -d '[:space:]' | grep -c '18.09.0') -ne 1 ] ; then \
+    if [ $(apt-cache madison docker-ce-cli | cut -d\| -f2 | tr -d '[:space:]' | grep -c "${DOCKER_ENGINE_VERSION}") -ne 1 ] ; then \
         echo "docker CLI version does not match ${DOCKER_ENGINE_VERSION}." ; \
     else { \ 
         apt-get install -qy --no-install-recommends \
