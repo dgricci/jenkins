@@ -40,18 +40,11 @@ RUN set -eux \
     dockerd --version ; \
     docker version ; \
     usermod -aG docker jenkins ; \
-    wget -O /usr/local/bin/modprobe "https://raw.githubusercontent.com/docker-library/docker/master/19.03/modprobe.sh" ; \
-    chmod +x /usr/local/bin/modprobe ; \
-    wget -O /usr/local/bin/docker-in-docker-entrypoint.sh "https://raw.githubusercontent.com/docker-library/docker/master/19.03/docker-entrypoint.sh" ; \
-    chmod +x /usr/local/bin/docker-in-docker-entrypoint.sh ; \
     apt-get -y purge \
         curl ; \
     apt-get -y clean ; \
     apt-get -y autoremove ; \
     rm -fr /var/lib/apt/lists/*
-
-COPY modprobe.sh /usr/local/bin/modprobe
-COPY docker-entrypoint.sh /usr/local/bin/
 
 # https://github.com/docker-library/docker/pull/166
 #   dockerd-entrypoint.sh uses DOCKER_TLS_CERTDIR for auto-generating TLS certificates
@@ -67,6 +60,4 @@ USER jenkins
 #add jenkins plugins (See https://plugins.jenkins.io/) :
 COPY plugins.txt /usr/share/jenkins/plugins.txt
 RUN /usr/local/bin/plugins.sh /usr/share/jenkins/plugins.txt
-
-ENTRYPOINT ["docker-in-docker-entrypoint.sh"]
 
