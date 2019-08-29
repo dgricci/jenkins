@@ -19,7 +19,7 @@ ENV DOCKER_ENGINE_VERSION ${DOCKER_ENGINE_VERSION:-18.09.1}
 # set docker group id the same as the host to prevent a "dial unix
 # /var/run/docker.sock: connect: permission denied" error. Implies rebuilding
 # this image per host ...
-# one could use : --build-arg DOCKER_GROUPID=$(getenv group docker | cut -d: -f1)
+# one could use : --build-arg DOCKER_GROUPID=$(getent group docker | cut -d: -f1)
 ARG DOCKER_GROUPID
 ENV DOCKER_GROUPID ${DOCKER_GROUPID:-128}
 
