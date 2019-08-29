@@ -5,7 +5,7 @@
 ---
 
 revision:
-    - 1.0.0 : 2019/08/28 : Jenkins 2.176.2 (Docker in Docker)  
+    - 1.0.0 : 2019/08/28 : Jenkins 2.176.3 (Docker in Docker)  
 
 ---
 

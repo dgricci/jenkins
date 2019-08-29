@@ -6,8 +6,7 @@
 
 revision:
     - 1.0.0 : 2019/01/06 : Jenkins 2.150.1 (only Docker from Docker)  
-    - 1.0.1 : 2019/01/14 : Jenkins 2.150.1 (both Docker from Docker and Docker in Docker)  
-    - 2.0.0 : 2019/08/29 : Jenkins 2.176.2 (Dind and Dond approches)  
+    - 2.0.0 : 2019/08/29 : Jenkins 2.176.3 (Dind and Dond approches)  
 
 ---
 
